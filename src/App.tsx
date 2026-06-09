@@ -606,6 +606,7 @@ function App() {
 
         <FinalCta />
       </div>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-00RCP0QN93"></script>
 
       {selectedAction ? <FeatureDialog action={selectedAction} onClose={() => setSelectedAction(null)} /> : null}
     </main>
