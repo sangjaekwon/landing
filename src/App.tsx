@@ -11,7 +11,7 @@ import {
 } from './content/cards';
 import './styles.css';
 
-const googleFormUrl = import.meta.env.VITE_GOOGLE_FORM_URL ?? '';
+const googleFormUrl = 'https://forms.gle/mse3YgAX5ShNFLbx6';
 
 type LogEntry = {
   event: string;
