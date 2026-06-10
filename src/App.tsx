@@ -43,6 +43,14 @@ function logEvent(eventName: string): void {
   }
 }
 
+function trackEvent(eventName: string, params: Record<string, string> = {}): void {
+  const cleanUtm = Object.fromEntries(
+    Object.entries(getStoredUtm()).filter(([, value]) => value)
+  );
+  window.gtag?.('event', eventName, { ...cleanUtm, ...params });
+  logEvent(eventName);
+}
+
 function captureUtm(): void {
   try {
     const params = new URLSearchParams(window.location.search);
@@ -142,7 +150,7 @@ function DashboardPreview() {
               <h3>이번 주 이벤트 레이더</h3>
               <div className="event-list">
                 <div className="event-item">
-                  <span>서울 프로모션 카드 배포</span>
+                  <span>서울 프로모 카드 배포</span>
                   <b>오늘</b>
                 </div>
                 <div className="event-item">
@@ -219,7 +227,7 @@ function ValidationCard({ action, onSelect }: { action: ValidationAction; onSele
         type="button"
         data-event={action.analyticsEvent}
         onClick={() => {
-          logEvent(action.analyticsEvent);
+          trackEvent(action.analyticsEvent, { feature: action.id });
           onSelect(action);
         }}
       >
@@ -385,10 +393,18 @@ function FeatureDialog({
     setSubmitted(true);
   };
 
+  const handleClose = () => {
+    trackEvent('dialog_close', {
+      feature: action.id,
+      step: submitted ? 'survey_prompt' : 'form'
+    });
+    onClose();
+  };
+
   return (
     <div className="modal-backdrop" role="presentation">
       <section className="feature-dialog" role="dialog" aria-modal="true" aria-label={action.title}>
-        <button className="dialog-close" type="button" aria-label="닫기" onClick={onClose}>
+        <button className="dialog-close" type="button" aria-label="닫기" onClick={handleClose}>
           ×
         </button>
         <div className="dialog-heading">
@@ -409,6 +425,7 @@ function FeatureDialog({
               className="button button-primary"
               type="button"
               onClick={() => {
+                trackEvent(action.surveyEvent, { feature: action.id });
                 if (googleFormUrl.trim()) {
                   window.open(googleFormUrl, '_blank', 'noopener,noreferrer');
                 }
@@ -581,7 +598,7 @@ function App() {
           <p className="hero-caption">{landingContent.heroCaption}</p>
           <div className="hero-points" aria-label="PokeBase 주요 기능">
             <div><strong>시세</strong><span>최근 거래 범위</span></div>
-            <div><strong>행사</strong><span>지역별 프로모션</span></div>
+            <div><strong>행사</strong><span>지역별 프로모</span></div>
             <div><strong>거래</strong><span>구매·판매 의향</span></div>
           </div>
         </div>
@@ -606,8 +623,6 @@ function App() {
 
         <FinalCta />
       </div>
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-00RCP0QN93"></script>
-
       {selectedAction ? <FeatureDialog action={selectedAction} onClose={() => setSelectedAction(null)} /> : null}
     </main>
   );

@@ -211,7 +211,7 @@ Find the `<section className="hero">` block inside `App` and replace it:
       </div>
       <div>
         <strong>행사</strong>
-        <span>지역별 프로모션</span>
+        <span>지역별 프로모</span>
       </div>
       <div>
         <strong>거래</strong>
@@ -514,7 +514,7 @@ In `App.tsx`, find the `DashboardPreview` function. Make two changes:
 Find and delete:
 ```tsx
 <div className="search-box" aria-hidden="true">
-  리자몽 ex, 서울 프로모션, 판매 의향...
+  리자몽 ex, 서울 프로모, 판매 의향...
 </div>
 ```
 
@@ -677,7 +677,7 @@ git commit -m "feat: remove beta-preparation survey section from landing page"
 Find:
 ```typescript
 const EVENT_REGIONS = ['서울', '부산', '대구', '대전', '전국'] as const;
-const EVENT_CATEGORIES = ['프로모션 카드', '팝업스토어', '신제품', '카드샵 행사', '대회'] as const;
+const EVENT_CATEGORIES = ['프로모 카드', '팝업스토어', '신제품', '카드샵 행사', '대회'] as const;
 ```
 
 Replace with:
@@ -689,7 +689,7 @@ export const EVENT_REGIONS = [
 ] as const;
 
 export const EVENT_CATEGORIES = [
-  '프로모션 카드', '팝업스토어', '신제품 발매', '카드샵 행사',
+  '프로모 카드', '팝업스토어', '신제품 발매', '카드샵 행사',
   '대회·토너먼트', '한정판 굿즈', '온라인 이벤트', '콜라보 상품',
 ] as const;
 ```

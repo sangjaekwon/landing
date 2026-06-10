@@ -506,7 +506,7 @@ it('event dialog shows region and category toggles', () => {
 
   expect(screen.getByRole('dialog', { name: '행사 알림 받기' })).toBeInTheDocument();
   expect(screen.getByRole('button', { name: '서울' })).toBeInTheDocument();
-  expect(screen.getByRole('button', { name: '프로모션 카드' })).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: '프로모 카드' })).toBeInTheDocument();
 });
 
 it('trade dialog tab switching changes labels', () => {
@@ -663,7 +663,7 @@ function PriceDialogContent({ onSubmit }: { onSubmit: (e: FormEvent<HTMLFormElem
 Add after `PriceDialogContent`:
 ```typescript
 const EVENT_REGIONS = ['서울', '부산', '대구', '대전', '전국'] as const;
-const EVENT_CATEGORIES = ['프로모션 카드', '팝업스토어', '신제품', '카드샵 행사', '대회'] as const;
+const EVENT_CATEGORIES = ['프로모 카드', '팝업스토어', '신제품', '카드샵 행사', '대회'] as const;
 
 function EventDialogContent({ onSubmit }: { onSubmit: (e: FormEvent<HTMLFormElement>) => void }) {
   const [region, setRegion] = useState('');

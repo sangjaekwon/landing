@@ -8,6 +8,7 @@ export type ValidationAction = {
   buttonLabel: string;
   inputs: string[];
   analyticsEvent: string;
+  surveyEvent: string;
 };
 
 export type LandingContent = {
@@ -37,6 +38,10 @@ export const analyticsEvents = [
   'select_trade_buy',
   'select_trade_sell',
   'submit_trade_card',
+  'click_price_survey',
+  'click_event_survey',
+  'click_trade_survey',
+  'dialog_close',
 ] as const;
 
 export const landingContent: LandingContent = {
@@ -44,7 +49,7 @@ export const landingContent: LandingContent = {
   eyebrow: '포켓몬카드 서비스',
   title: '포켓몬카드를\n가장 스마트하게 즐기는 법',
   heroDescription:
-    '카드명만 입력해 시세를 확인하고, 놓치기 쉬운 프로모션 행사와 구매·판매 의향까지\n한 화면에서 관리하세요.',
+    '카드명만 입력해 시세를 확인하고, 놓치기 쉬운 프로모 행사와 구매·판매 의향까지\n한 화면에서 관리하세요.',
   heroCta: '서비스 둘러보기',
   heroCaption: '서비스 보드를 확인한 뒤 필요한 기능을 바로 선택하세요.',
   dashboardTitle: '포켓몬카드 라이브 보드',
@@ -61,16 +66,18 @@ export const validationActions: ValidationAction[] = [
     description: '카드 사진 또는 카드명을 남기면 최근 매물과 예상 거래 범위를 확인할 수 있습니다.',
     buttonLabel: '시세 확인하기',
     inputs: ['카드 사진 또는 카드명', '연락받을 이메일 또는 오픈프로필'],
-    analyticsEvent: 'click_price'
+    analyticsEvent: 'click_price',
+    surveyEvent: 'click_price_survey'
   },
   {
     id: 'event',
     icon: '!',
     title: '행사 알림 받기',
-    description: '프로모션 배포, 팝업스토어, 신제품 출시, 카드샵 행사와 대회를 지역별로 확인합니다.',
+    description: '프로모 배포, 팝업스토어, 신제품 출시, 카드샵 행사와 대회를 지역별로 확인합니다.',
     buttonLabel: '알림 설정하기',
     inputs: ['관심 지역', '알림받을 연락처'],
-    analyticsEvent: 'click_event'
+    analyticsEvent: 'click_event',
+    surveyEvent: 'click_event_survey'
   },
   {
     id: 'trade',
@@ -79,7 +86,8 @@ export const validationActions: ValidationAction[] = [
     description: '판매자는 카드 사진과 희망 가격을, 구매자는 찾는 카드와 예산을 남깁니다.',
     buttonLabel: '거래 시작하기',
     inputs: ['구매 또는 판매 카드명', '연락 가능한 오픈프로필'],
-    analyticsEvent: 'click_trade'
+    analyticsEvent: 'click_trade',
+    surveyEvent: 'click_trade_survey'
   }
 ];
 
@@ -106,6 +114,6 @@ export const EVENT_REGIONS = [
 ] as const;
 
 export const EVENT_CATEGORIES = [
-  '프로모션 카드', '팝업스토어', '신제품 발매', '카드샵 행사',
+  '프로모 카드', '팝업스토어', '신제품 발매', '카드샵 행사',
   '대회·토너먼트', '한정판 굿즈', '온라인 이벤트', '콜라보 상품',
 ] as const;

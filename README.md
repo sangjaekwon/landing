@@ -34,13 +34,10 @@ The page exposes stable `data-event` values for later analytics wiring:
 
 ```text
 click_price
-submit_price_card
+click_price_survey
 click_event
-submit_event_alert
+click_event_survey
 click_trade
-select_trade_buy
-select_trade_sell
-submit_trade_card
-click_survey
-request_interview
+click_trade_survey
+dialog_close
 ```

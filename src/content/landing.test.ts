@@ -8,10 +8,10 @@ import {
 
 describe('landing content contract', () => {
   it('frames the product as a user-facing Pokemon card service', () => {
-    expect(landingContent.productName).toBe('PokeBase');
+    expect(landingContent.productName).toBe('줍줍');
     expect(landingContent.title).toContain('포켓몬카드');
     expect(landingContent.heroDescription).toContain('시세');
-    expect(landingContent.heroDescription).toContain('프로모션');
+    expect(landingContent.heroDescription).toContain('프로모');
     expect(landingContent.heroDescription).toContain('구매·판매');
   });
 
@@ -25,6 +25,7 @@ describe('landing content contract', () => {
       expect(action.buttonLabel.length).toBeGreaterThan(0);
       expect(action.inputs).toHaveLength(2);
       expect(action.analyticsEvent).toMatch(/^click_/);
+      expect(action.surveyEvent).toBe(`click_${action.id}_survey`);
     }
   });
 
@@ -60,6 +61,10 @@ describe('landing content contract', () => {
       'select_trade_buy',
       'select_trade_sell',
       'submit_trade_card',
+      'click_price_survey',
+      'click_event_survey',
+      'click_trade_survey',
+      'dialog_close',
     ]);
   });
 });

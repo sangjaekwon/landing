@@ -66,7 +66,7 @@ Replace the current multi-field form with:
 - **관심 지역**: Change from toggle-button group to `<select>` dropdown containing all 17 Korean administrative regions + "전국" as default option:  
   전국, 서울, 부산, 대구, 인천, 광주, 대전, 울산, 세종, 경기, 강원, 충북, 충남, 전북, 전남, 경북, 경남, 제주
 - **관심 분야**: Expand from 5 categories to 8:  
-  프로모션 카드, 팝업스토어, 신제품 발매, 카드샵 행사, 대회·토너먼트, 한정판 굿즈, 온라인 이벤트, 콜라보 상품
+  프로모 카드, 팝업스토어, 신제품 발매, 카드샵 행사, 대회·토너먼트, 한정판 굿즈, 온라인 이벤트, 콜라보 상품
 - Remove 연락처 field
 - On "알림 신청하기" click → beta modal
 
